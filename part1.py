@@ -203,8 +203,7 @@ class Game():
         #complete the method implementation below
         x = random.randrange(200)
         y = random.randrange(100)
-        self.rectangleCoordinates = [ x - PREY_ICON_WIDTH, y - PREY_ICON_WIDTH, x + PREY_ICON_WIDTH,
-                                 y + PREY_ICON_WIDTH ]
+        self.rectangleCoordinates = [ x - PREY_ICON_WIDTH, y - PREY_ICON_WIDTH, x + PREY_ICON_WIDTH, y + PREY_ICON_WIDTH ]
 
 
 if __name__ == "__main__":
