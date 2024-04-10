@@ -187,6 +187,8 @@ class Game():
         """
         x, y = snakeCoordinates
         #complete the method implementation below
+        if x in (0,200) or y in (0,100):
+            self.queue.put({"game_over"})
 
     def createNewPrey(self) -> None:
         """ 
@@ -201,10 +203,10 @@ class Game():
         """
         THRESHOLD = 15   #sets how close prey can be to borders
         #complete the method implementation below
-        x = random.randrange(200)
-        y = random.randrange(100)
-        self.rectangleCoordinates = [ x - PREY_ICON_WIDTH, y - PREY_ICON_WIDTH, x + PREY_ICON_WIDTH, y + PREY_ICON_WIDTH ]
-
+        x = random.randrange(0 + THRESHOLD, 200 - THRESHOLD)
+        y = random.randrange(0 + THRESHOLD, 100 - THRESHOLD)
+        prey = [ x - PREY_ICON_WIDTH/2, y - PREY_ICON_WIDTH/2, x + PREY_ICON_WIDTH/2, y + PREY_ICON_WIDTH/2 ]
+        self.queue.put({"prey": prey})
 
 if __name__ == "__main__":
     #some constants for our GUI
@@ -214,8 +216,8 @@ if __name__ == "__main__":
     #add the specified constant PREY_ICON_WIDTH here
     PREY_ICON_WIDTH = 10     
 
-    BACKGROUND_COLOUR = "black"   #you may change this colour if you wish
-    ICON_COLOUR = "red"        #you may change this colour if you wish
+    BACKGROUND_COLOUR = "green"   #you may change this colour if you wish
+    ICON_COLOUR = "yellow"        #you may change this colour if you wish
 
     gameQueue = queue.Queue()     #instantiate a queue object using python's queue class
 
