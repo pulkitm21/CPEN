@@ -162,9 +162,23 @@ class Game():
             The snake coordinates list (representing its length 
             and position) should be correctly updated.
         """
+        #adding new coordinate to list and managing the length of the snake
         NewSnakeCoordinates = self.calculateNewCoordinates()
-        self.snakeCoordinates.append(NewSnakeCoordinates)
-        self.snakeCoordinates.pop(0)   #removes first element in
+         
+
+        #to check if prey has been captured by the new movement
+        if NewSnakeCoordinates == self.prey:
+            self.score += 1
+            self.queue.put({"score":self.score})
+            self.snakeCoordinates.append(NewSnakeCoordinates)
+            self.createNewPrey()
+        else:
+            self.snakeCoordinates.append(NewSnakeCoordinates)
+            self.snakeCoordinates.pop(0)
+        
+        #if game is over
+        self.isGameOver(NewSnakeCoordinates)
+    
 
 
     def calculateNewCoordinates(self) -> tuple:
