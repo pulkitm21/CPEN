@@ -128,7 +128,7 @@ class Game():
         SPEED = 0.15     #speed of snake updates (sec)
         while self.gameNotOver:
             #complete the method implementation below
-            self.move_snake()
+            self.move()
             time.sleep(SPEED)
             
 
