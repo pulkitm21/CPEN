@@ -197,7 +197,8 @@ class Game():
         elif head in snakeCoordinates[:-1]:
             self.gameNotOver = False
             self.queue.put({"game_over"})
-        return
+        else:
+            self.gameNotOver = True
 
     def createNewPrey(self) -> None:
         """ 
