@@ -204,8 +204,15 @@ class Game():
         """
         x, y = snakeCoordinates
         #complete the method implementation below
-        if x in (0,200) or y in (0,100):
+        head = snakeCoordinates[-1]
+        if x <= 0 or x >= WINDOW_WIDTH or y <= 0 or y >= WINDOW_HEIGHT:
+            self.gameNotOver = False
             self.queue.put({"game_over"})
+        elif head in snakeCoordinates[:-1]:
+            self.gameNotOver = False
+            self.queue.put({"game_over"})
+        else:
+            self.gameNotOver = True
 
     def createNewPrey(self) -> None:
         """ 
